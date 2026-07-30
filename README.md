@@ -243,7 +243,8 @@ These screenshots represent the latest Telosa Insight UI.
 │   ├── MockData.md
 │   ├── ProblemStatement.md
 │   ├── SystemArchitecture.md
-│   └── UIUXSpecification.md
+│   ├── UIUXSpecification.md
+│   └── VercelDeployment.md
 ├── types/
 │   ├── domain.ts
 │   ├── index.ts
@@ -263,7 +264,7 @@ These screenshots represent the latest Telosa Insight UI.
 | `services/` | AI provider abstraction, conversation orchestration, dashboard aggregation, configuration, and deterministic business scoring |
 | `lib/` | Design tokens, status styles, formatting helpers, and shared utilities |
 | `mock/` | Realistic clinic, patient, and conversation fixtures used by the demo and fallback workflow |
-| `docs/` | Product strategy, architecture, UX, feature, data, and implementation specifications |
+| `docs/` | Product strategy, architecture, UX, feature, data, implementation, and deployment specifications |
 | `types/` | Shared domain and UI TypeScript definitions |
 
 ---
@@ -321,6 +322,24 @@ GEMINI_MODEL=gemini-3.6-flash
 
 > [!CAUTION]
 > Keep `.env.local` out of source control. Never commit a real Gemini API key.
+
+---
+
+## Deploy
+
+Telosa Insight deploys to Vercel as a standard Next.js 15 app from the GitHub repository.
+
+| Environment | Trigger | AI mode |
+| --- | --- | --- |
+| Preview | Pull requests / non-`main` branches | Mock (`USE_REAL_AI=false`) |
+| Production | Push to `main` | Live Gemini (`USE_REAL_AI=true` + `GEMINI_API_KEY`) |
+
+1. Import the repo in the Vercel dashboard (Framework Preset: **Next.js**, build: `npm run build`).
+2. Set Production env vars: `USE_REAL_AI=true`, `GEMINI_API_KEY`, and optionally `GEMINI_MODEL=gemini-3.6-flash`.
+3. Keep Preview on mock AI (`USE_REAL_AI=false`); do not expose the Gemini key with a `NEXT_PUBLIC_` prefix.
+4. Redeploy after changing secrets, then smoke-test `/`, `/conversation`, `/conversation/CONV-009`, and `/business-impact/CONV-009`.
+
+Full step-by-step instructions, rollback, and troubleshooting: [docs/VercelDeployment.md](./docs/VercelDeployment.md).
 
 ---
 
