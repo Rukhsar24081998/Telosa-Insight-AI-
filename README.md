@@ -171,26 +171,31 @@ flowchart TD
 
 ---
 
-## Screens
+## Screenshots
 
-### Executive Dashboard
+These screenshots represent the latest Telosa Insight UI.
 
-![Telosa Insight executive dashboard](images/dashboard.png)
+## Executive Dashboard
 
-### Conversation List
+![Executive Dashboard showing KPI cards, executive summary, priority conversations, and AI insights](./assets/screenshots/dashboard.png)
 
-![Telosa Insight conversation list](images/conversations.png)
+---
 
-### Conversation Details
+## Conversation List
 
-![Telosa Insight conversation details](images/conversation-details.png)
+![Conversation List showing searchable filters and prioritized conversation cards](./assets/screenshots/conversation-list.png)
 
-### Business Impact
+---
 
-![Telosa Insight Business Impact report](images/business-impact.png)
+## Conversation Details
 
-> [!TIP]
-> Place production screenshots at the `images/` paths above before publishing the repository.
+![Conversation Details showing original message, AI analysis, and business impact preview](./assets/screenshots/conversation-details.png)
+
+---
+
+## Business Impact
+
+![Business Impact report showing score visualization, scoring breakdown, and recommended actions](./assets/screenshots/business-impact.png)
 
 ---
 
